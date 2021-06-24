@@ -1,11 +1,12 @@
-import logoImg from '../assets/images/logo.svg';
-import { Button } from '../components/Button';
-import RoomCode from '../components/RoomCode';
-import '../styles/room.scss';
+import logoImg from '../../assets/images/logo.svg';
+import { Button } from '../../components/Button';
+import RoomCode from '../../components/RoomCode';
+import './styles.scss';
 import { useParams } from 'react-router-dom';
 import { FormEvent, useEffect, useState } from 'react';
-import { useAuth } from '../hooks/useAuth';
-import { database } from '../services/firebase';
+import { useAuth } from '../../hooks/useAuth';
+import { database } from '../../services/firebase';
+import Question from '../../components/Question';
 
 type Questions = {
     id: string;
@@ -49,7 +50,7 @@ function Room(){
         const roomRef = database.ref(`rooms/${roomId}`);
         roomRef.once('value', room =>{
             const databaseRoom = room.val();
-            const firebaseQuestions: FirebaseQuestions = databaseRoom.questions ?? {};
+            const firebaseQuestions: FirebaseQuestions = databaseRoom.question ?? {};
             const parseQuestions = Object.entries(firebaseQuestions ).map(([key, value]) => {
                 return{
                     id: key,
@@ -132,7 +133,18 @@ function Room(){
                         <Button type="submit" disabled={ !user }>Enviar pergunta</Button>
                     </div>
                 </form>
-                {JSON.stringify(questions)}
+                <div className="question-list">
+
+                    { questions?.map((question) =>(
+                        <Question 
+                            key={question.id}
+                            content = {question.content}
+                            author = { question.author }/>
+
+                    ))}
+
+                </div>
+                
 
             </main>
         </div>

@@ -1,13 +1,13 @@
 import { useHistory } from 'react-router-dom';
-import { Button } from '../components/Button';
-import * as routes from '../routes/paths';
-import illustrationImg from '../assets/images/illustration.svg';
-import logoImg from '../assets/images/logo.svg';
-import googleIconImg from '../assets/images/google-icon.svg';
-import '../styles/auth.scss';
-import { useAuth } from '../hooks/useAuth';
+import { Button } from '../../components/Button';
+import * as routes from '../../routes/paths';
+import illustrationImg from '../../assets/images/illustration.svg';
+import logoImg from '../../assets/images/logo.svg';
+import googleIconImg from '../../assets/images/google-icon.svg';
+import './styles.scss';
+import { useAuth } from '../../hooks/useAuth';
 import { FormEvent, useState } from 'react';
-import { database } from '../services/firebase';
+import { database } from '../../services/firebase';
 
 export function Home(){
 
