@@ -4,6 +4,7 @@ import { Home } from './pages/Home';
 import { AuthContextProvider } from '../src/contexts/AuthContext';
 import * as routes from './routes/paths';
 import Room from './pages/Room';
+import AdminRoom from './pages/AdminRoom';
 
 
 function App() { 
@@ -14,7 +15,8 @@ function App() {
         <AuthContextProvider>
             <Route path={routes.HOME} exact component={Home} />
             <Route path={routes.NEWROOM} component={NewRoom} /> 
-            <Route path={routes.ROOM} component={Room} />        
+            <Route path={routes.ROOM} component={Room} />   
+            <Route path={routes.ADMIN_ROOM} component={AdminRoom} />     
           </AuthContextProvider>  
       </Switch>               
     </BrowserRouter>
